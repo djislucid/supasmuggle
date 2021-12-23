@@ -74,6 +74,7 @@ func main() {
 	}
 
 	// begin supafast stuff
+	// thanks @tomnomnom for httprobe, where I learned how to concurrency
 	t1 := time.Now()
 	var tasksWG sync.WaitGroup
 	tasks := make(chan string)

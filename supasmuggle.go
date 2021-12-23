@@ -13,7 +13,6 @@ package main
  * 
  * To Do:
  *	Add flags to enable exhaustive mode in smuggler.py as well as not stop after finding one vuln (should be real easy)
- *	Add a timer so you can see how long it took
  */
 
 import (
@@ -45,6 +44,11 @@ var report = color.New(color.FgGreen).SprintFunc()
 var fail = color.New(color.FgRed).SprintFunc()
 var warn = color.New(color.FgYellow).PrintfFunc()
 
+// format scan time
+func timer(t time.Duration) {
+	fmt.Printf("\nScan completed in %s seconds\n", t.Round(time.Millisecond))
+}
+
 func main() {
 	// args parsing duh
 	var sec int
@@ -70,6 +74,7 @@ func main() {
 	}
 
 	// begin supafast stuff
+	t1 := time.Now()
 	var tasksWG sync.WaitGroup
 	tasks := make(chan string)
 	output := make(chan Results)
@@ -142,6 +147,8 @@ func main() {
 
 	close(tasks)
 	outputWG.Wait()
+	timer(time.Since(t1))
+
 }
 
 // I lika... do... dah cha cha

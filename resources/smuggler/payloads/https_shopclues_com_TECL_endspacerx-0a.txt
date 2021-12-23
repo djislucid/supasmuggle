@@ -1,0 +1,11 @@
+POST /?cb=045801114947764954 HTTP/1.1
+Transfer-Encoding: chunked
+X: X
+Host: shopclues.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 6
+
+0
+
+X

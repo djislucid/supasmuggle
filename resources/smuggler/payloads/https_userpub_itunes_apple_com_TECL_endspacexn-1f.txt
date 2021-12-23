@@ -1,0 +1,12 @@
+POST /WebObjects/MZUserPublishing.woa/wa/addUserReview?cb=7323859672359289 HTTP/1.1
+Transfer-Encoding: chunked
+X: X
+Host: userpub.itunes.apple.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 6
+Cookie:  nsc_navtfsqvcmjtijoh-tu44-mc=ffffffff0944a54445525d5f4f58455e445a4a422971;
+
+0
+
+X

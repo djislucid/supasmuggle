@@ -1,0 +1,11 @@
+POST /?cb=15012829636012692 HTTP/1.1
+Transfer-Encoding: chunkedX: X
+Host: telenethotspot.be
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 6
+Cookie:  dtcookie=4$61d7aec8ccbc379217119047c3375180|26e6b988bed3df45|1; bigipservervrnmctths.prd.cust.telenet.be=!bj/4th37oibdpknhfy6evvs3wrcoiwglhpnh7nfl+cnussv2txzzjvh7/n4/buu6t897hefk5kf596enqo/rucing6p6pq2qj4ayyjutsw==; ts01b72ace=01aef304cb868666674dc7d4a84a9168a7455e00dd73ef1c61ec2eb6631d8c67560a0841688a7a57f7bf5b8cb174a48668fc68d0a1; ts01310196=01aef304cb868666674dc7d4a84a9168a7455e00dd73ef1c61ec2eb6631d8c67560a0841688a7a57f7bf5b8cb174a48668fc68d0a1;
+
+0
+
+X

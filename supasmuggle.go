@@ -46,7 +46,7 @@ var warn = color.New(color.FgYellow).PrintfFunc()
 
 // format scan time
 func timer(t time.Duration) {
-	fmt.Printf("\nScan completed in %s seconds\n", t.Round(time.Millisecond))
+	fmt.Printf("\nScan completed in %s seconds\n", report(t.Round(time.Millisecond)))
 }
 
 func main() {

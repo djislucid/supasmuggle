@@ -1,4 +1,4 @@
-module supasmuggle
+module github.com/djIsLucid/supasmuggle
 
 go 1.15
 

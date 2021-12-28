@@ -1,10 +1,10 @@
-POST /?cb=5366260754603934 HTTP/1.1
+POST /?cb=8975604569806503 HTTP/1.1
 Transfer-Encoding	:	chunked
 Host: checkout.a-dtap.ecom.albelli.nl
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
 Content-type: application/x-www-form-urlencoded; charset=UTF-8
 Content-Length: 4
-Cookie:  .anonymous=0hszjbcxsrg84g27x4nnvrydp0sujjwflneoefeie5nryzedsmuu2xdpxrvahgmqg7lsuzf7xl8fn-tpoayy1euhktubtoibq-x-ll5i6uqx2c2wtwtqyhbzgsghkr0_t09kuq2; cart=|1200||unknown;
+Cookie:  .anonymous=2gogskdto5dfoxw5pdyx6dgxwbenz0tj6ovl47xq5tzgs41ivg0n4om8dnmvpqb7_xaurax6gxueeckzqmeqzkbyk1vajuie1agr0bw2uotjvhf13ixs-exvuphygkjrhjh1lq2; cart=|1200||unknown;
 
 1
 Z

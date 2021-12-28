@@ -6,10 +6,8 @@ package main
 
 /*
  * Bugs:
- *	Not 100% sure the CommandContext timeout is working
- *	Writing to file is ugly and I need to find a more elegant way to append to new files
- * 	...
- * 	It's not better
+ *	- Not 100% sure the CommandContext timeout is working
+ * 	- It's not better
  * 
  * To Do:
  *	Add flags to enable exhaustive mode in smuggler.py as well as not stop after finding one vuln (should be real easy)
@@ -18,7 +16,6 @@ package main
 import (
 	"fmt"
 	"flag"
-	"io"
 	"os"
 	"os/exec"
 	"log"
@@ -27,6 +24,7 @@ import (
 	"sync"
 	"time"
 	"strings"
+	"encoding/json"
 
 	"github.com/fatih/color"
 )
@@ -61,7 +59,9 @@ func main() {
 	flag.BoolVar(&debug, "d", false, "Show the actual output of smuggler.py")
 
 	var outfile string
-	flag.StringVar(&outfile, "o", "supa.out", "Specify an output file")
+        t := time.Now()
+	fname := fmt.Sprintf("supa_%v-%v-%v_%v.json", t.Hour(), t.Minute(), t.Second(), t.Year())
+	flag.StringVar(&outfile, "o", fname, "Specify an output file")
 
 	var file string
 	flag.StringVar(&file, "f", "THERE IS NO SPOON", "File containing URLs to look HRS vulnerabilities on")
@@ -107,7 +107,7 @@ func main() {
 		for o := range output {
 			if o.Payload == "" {
 				fmt.Printf("Scanned %s %s\n", report(o.Host), fail(o.Error))
-			} else {
+			} else{
 				successmsg("Potential vulnerability found: %s\n", success(o.Host))
 				fmt.Printf("Payload: %s\n", o.Payload)
 
@@ -116,11 +116,13 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
+				defer f.Close()
 
-				// save the successful output to it (whether you like it or not)
-				fo := fmt.Sprintf("%s : %s", o.Host, o.Payload)
-				_, err = io.WriteString(f, fo)
+				js, err := json.Marshal(o)
 				if err != nil {
+					log.Fatal(err)
+				}
+				if _, err = f.WriteString(string(js)); err != nil {
 					log.Fatal(err)
 				}
 			}
@@ -155,11 +157,16 @@ func main() {
 // I lika... do... dah cha cha
 func smuggler(t string, sec int, debug bool) (Results, error) {
 	var r Results
+	pwd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	pybin := fmt.Sprintf("%s/resources/smuggler/smuggler.py", pwd)
 	// time out smuggler.py if it takes too long
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "./resources/smuggler/smuggler.py", "-x", "-u", t)
+	cmd := exec.CommandContext(ctx, pybin, "-x", "-u", t)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return r, err

@@ -1,12 +1,10 @@
-POST /?cb=8146756927339504 HTTP/1.1
- Transfer-Encoding: chunked
-Host: mcssl.com
+POST /?cb=2590490246948164 HTTP/1.1
+Transfer-Encoding	:	chunked
+Host: origin.domain.com
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
 Content-type: application/x-www-form-urlencoded; charset=UTF-8
-Content-Length: 4
-Cookie:  aspsessionidscdtcbrs=fdengjbbfdcklepceecgohei;
+Content-Length: 6
 
-1
-Z
 0
 
+X

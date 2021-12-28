@@ -227,7 +227,7 @@ class Desyncr():
 				_me = sys.argv[0]
 			fname = os.path.realpath(os.path.dirname(_me)) + "/payloads/%s_%s_%s.txt" % (furl,ptype,name)
 			pretty_print("CRITICAL", "%s Payload: %s URL: %s\n" % \
-			(Fore.MAGENTA+ptype, Fore.CYAN+fname+Fore.MAGENTA, Fore.CYAN+self._url))
+			(ptype, fname, self._url))
 			with open(fname, 'wb') as file:
 				file.write(bytes(str(payload),'utf-8'))
 

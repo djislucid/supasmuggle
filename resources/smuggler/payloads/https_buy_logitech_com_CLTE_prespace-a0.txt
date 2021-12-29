@@ -1,0 +1,12 @@
+POST /?cb=9535469337916106 HTTP/1.1
+ Transfer-Encoding: chunked
+Host: buy.logitech.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 4
+Cookie:  awselb=8f317fa3127aa245d417ef8fb0adaefba413933539a0b107375d23ca118d89dad7bf0c6237717bfd336cd61a0570319947bfbb7048d0e36d7950e3c2cac385239550cb2853; awselbcors=8f317fa3127aa245d417ef8fb0adaefba413933539a0b107375d23ca118d89dad7bf0c6237717bfd336cd61a0570319947bfbb7048d0e36d7950e3c2cac385239550cb2853; visid_incap_1638430=axqmt4/ktfkcqgbdinehqirrymeaaaaaquipaaaaaaclilrv5irtoqyj8lx2t5iu; nlbi_1638430=16mcauc0wxn/kqc8hv6fpqaaaadt3fzeotdsqjvm1os7nfld; incap_ses_1362_1638430=x/lps84ylmynqdxyf8zmeorrymeaaaaa/jehhk3r6v0uqo2ob32rgq==;
+
+1
+Z
+0
+

@@ -1,0 +1,12 @@
+POST /?cb=3001126691662864 HTTP/1.1
+Transfer-Encoding	:	chunked
+Host: secure.sharefile.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 4
+Cookie:  awsalbtg=ctvl2xhaiavevxwhqxhh5bx7nbhrsmtjormfuftukvqcnzs7khf7136dk82ebesdexxo1hr3bbtcpr0ehb1netgolel4wxanqfcjqb8niwgz3axo/n+olakzawk4f0ads+cltlqgmzxssu0s3yessgmfgr0sfmrgfln+2ub+9pju; awsalbtgcors=ctvl2xhaiavevxwhqxhh5bx7nbhrsmtjormfuftukvqcnzs7khf7136dk82ebesdexxo1hr3bbtcpr0ehb1netgolel4wxanqfcjqb8niwgz3axo/n+olakzawk4f0ads+cltlqgmzxssu0s3yessgmfgr0sfmrgfln+2ub+9pju; awsalb=eudtwshvry6cexywzstyi1blxvdkneq0bqgmrb1jryakjdexzbg1rogjvkzn5v2r4obssj9jbxa2hdw9mxltuaza456iz7e2rovzduani/posq3s3zjngew0zz5n; awsalbcors=eudtwshvry6cexywzstyi1blxvdkneq0bqgmrb1jryakjdexzbg1rogjvkzn5v2r4obssj9jbxa2hdw9mxltuaza456iz7e2rovzduani/posq3s3zjngew0zz5n; asp.net_sessionid=vd1xbnrjmh53pzbcjv1gt0xk;
+
+1
+Z
+0
+

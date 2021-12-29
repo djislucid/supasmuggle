@@ -1,10 +1,10 @@
-POST /?cb=038618195482482576 HTTP/1.1
+POST /?cb=9761185683063635 HTTP/1.1
 Transfer-Encoding	:	chunked
 Host: surveys.eeoc.gov
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
 Content-type: application/x-www-form-urlencoded; charset=UTF-8
 Content-Length: 4
-Cookie:  awsalb=bep/frr/wjxwjybeqi/6i/nb6ulltc3rbuh08als3kxdzuzercb4uadidinfj2+corxmylpppmscph9sufxfxsevpqcsfhwjrhesgs7kshu/jqyllgrsfznjj3td; awsalbcors=bep/frr/wjxwjybeqi/6i/nb6ulltc3rbuh08als3kxdzuzercb4uadidinfj2+corxmylpppmscph9sufxfxsevpqcsfhwjrhesgs7kshu/jqyllgrsfznjj3td;
+Cookie:  awsalb=cylmw7upfhqg0sfd7r1juhb/3jyzxqewqlwt9c4lslonjmlrxao4uovgyilb+k+tsbs0gmtpawejgw/nirgm2xbp0crbipbteewert5pnia6ztwsou4ldxb7ensj; awsalbcors=cylmw7upfhqg0sfd7r1juhb/3jyzxqewqlwt9c4lslonjmlrxao4uovgyilb+k+tsbs0gmtpawejgw/nirgm2xbp0crbipbteewert5pnia6ztwsou4ldxb7ensj;
 
 1
 Z

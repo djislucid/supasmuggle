@@ -1,0 +1,12 @@
+POST /?cb=8920880531503907 HTTP/1.1
+Transfer-Encoding: chunked
+Host: exchange.adobe.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 4
+Cookie:  awselb=e977ad4706e8c9ac0a442f7c9f9285fd279e17ae7290b3b08a8b00eed79f921b2dcd7bbe39b31c3bea1eae36758bd9b1659faa51e177628fff0ba2a43d069e86e2acd9826e; awselbcors=e977ad4706e8c9ac0a442f7c9f9285fd279e17ae7290b3b08a8b00eed79f921b2dcd7bbe39b31c3bea1eae36758bd9b1659faa51e177628fff0ba2a43d069e86e2acd9826e;
+
+1
+Z
+0
+

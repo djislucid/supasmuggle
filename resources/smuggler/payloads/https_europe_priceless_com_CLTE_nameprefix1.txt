@@ -1,10 +1,10 @@
-POST /?cb=10045292341929479 HTTP/1.1
+POST /?cb=41219204342022675 HTTP/1.1
  Transfer-Encoding: chunked
 Host: europe.priceless.com
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
 Content-type: application/x-www-form-urlencoded; charset=UTF-8
 Content-Length: 4
-Cookie:  website#lang=en; b1pi=!dhjymkpnsrkhhe0//usvgude4c/xmcvxtz2hmy9gtr99vvhoqcnaoyze0l8dc0ul52zqrlwsmd0rkg==;
+Cookie:  website#lang=en; b1pi=!i33ciz51sqnwf6e//usvgude4c/xmvznxzxp01bxhgocijux6de+agcrnu/bsz853hjfjftxi0hrwa==;
 
 1
 Z

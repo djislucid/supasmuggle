@@ -1,10 +1,10 @@
-POST /?cb=5595884102546839 HTTP/1.1
+POST /?cb=6999146826907076 HTTP/1.1
 Transfer-Encoding	:	chunked
 Host: origin-images.ipage.com
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
 Content-type: application/x-www-form-urlencoded; charset=UTF-8
 Content-Length: 6
-Cookie:  currency=usd; session_id=0c248bccfe690f435a3455b777012c5a;
+Cookie:  currency=usd; session_id=72b6232886b93f8bd318eb2324dcc44b;
 
 0
 

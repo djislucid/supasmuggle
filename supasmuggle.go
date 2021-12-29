@@ -80,10 +80,14 @@ func main() {
 	tasks := make(chan string)
 	output := make(chan Results)
 
+	// apparently I have an issue here
 	for i := 0; i < concurrency; i++ {
 		tasksWG.Add(1)
 
 		// do the cool things
+		// I had this in a go routine before and taking it out I noticed no performance change whatsoever
+		// yet according to someone on the Gopher Discord I'm closing the tasks channel almost immediately by doing this inside a goroutine
+		// which makes sense... yet somehow the program executes just the same
 		go func() {
 			for t := range tasks {
 				// actually run the HRS scan
@@ -96,14 +100,20 @@ func main() {
 			}
 			tasksWG.Done()
 		}()
-
 	}
 
 	// wait for all the output to come through the channel
+	// There shouldn't be anything wrong here?
 	var outputWG sync.WaitGroup
 	outputWG.Add(1)
 	go func() {
 		// Final output
+		f, err := os.OpenFile(outfile, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer f.Close()
+
 		for o := range output {
 			if o.Payload == "" {
 				fmt.Printf("Scanned %s %s\n", report(o.Host), fail(o.Error))
@@ -111,24 +121,22 @@ func main() {
 				successmsg("Potential vulnerability found: %s\n", success(o.Host))
 				fmt.Printf("Payload: %s\n", o.Payload)
 
-				// create output file
-				f, err := os.OpenFile(outfile, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
-				if err != nil {
-					log.Fatal(err)
-				}
-				defer f.Close()
-
+				// format output to JSON
 				js, err := json.Marshal(o)
 				if err != nil {
 					log.Fatal(err)
 				}
-				if _, err = f.WriteString(string(js)); err != nil {
-					log.Fatal(err)
-				}
+
+				// Then write it to file (whether you like it or not)
+				fmt.Fprintf(f, "%s\r\n", string(js))
+				//if _, err = f.WriteString(string(js)+"\n"); err != nil {
+				//	log.Fatal(err)
+				//}
 			}
 		}
 		outputWG.Done()
 	}()
+
 
 	// waiting for tasks to complete
 	go func() {
@@ -148,6 +156,8 @@ func main() {
 		tasks <- s.Text()
 	}
 
+	// because the I was waiting on tasks in a go routine this runs almost immediately which means I'm not executing any of the tasks
+	// even though it does indeed run everything? I don't get it
 	close(tasks)
 	outputWG.Wait()
 	timer(time.Since(t1))

@@ -1,10 +1,10 @@
-POST /?cb=7608705972146127 HTTP/1.1
+POST /?cb=640487240387312 HTTP/1.1
 Transfer-Encoding	:	chunked
 Host: controlpanel.mydomain.com
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
 Content-type: application/x-www-form-urlencoded; charset=UTF-8
 Content-Length: 6
-Cookie:  session_id=32554369b996fcead37b3ee680c14d5a;
+Cookie:  session_id=7a70e06123b6832c403fe81d55bea638;
 
 0
 

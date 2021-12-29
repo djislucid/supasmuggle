@@ -1,3 +1,6 @@
+# The binary
+supasmuggle
+*.json
 # Samples
 resources/sample.txt
 resources/small_sample.txt

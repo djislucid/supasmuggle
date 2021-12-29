@@ -1,0 +1,12 @@
+POST /?cb=36168953422144023 HTTP/1.1
+Transfer-Encoding: chunked
+Host: api-alpha.sam.gov
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
+Content-type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 4
+Cookie:  awselb=8345c5bd12b587779a829702a945cfbe87ff427567596b7fd1d9b9258dad91e3474f8638e90d5406df6c6178de5a42f94c2c9cce990551734108f3909eefbbb490cc31f0d4; awselbcors=8345c5bd12b587779a829702a945cfbe87ff427567596b7fd1d9b9258dad91e3474f8638e90d5406df6c6178de5a42f94c2c9cce990551734108f3909eefbbb490cc31f0d4; citrix_ns_id=lmpivkz0fi3rxobcvsem9re09fg0003; citrix_ns_id_.sam.gov_%2f_wat=aaaaaawjeio0-6pdsyykxutnjzcke5dkzb68o97zd0fzthcjmvfam8pss_1db4xjpy1b6tzdlxucr2hflj8ezeczzzkq&aaaaaaw27jfhv5c4tvk8jr8cgv6mh1k8-0-vkiwcmyszl0hcgk6_lci3lknqnyppi2io2z3sokdm0gtpbd_riqpd3rzz&;
+
+1
+Z
+0
+

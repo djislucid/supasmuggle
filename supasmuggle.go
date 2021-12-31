@@ -43,8 +43,17 @@ var fail = color.New(color.FgRed).SprintFunc()
 var warn = color.New(color.FgYellow).PrintfFunc()
 
 // format scan time
-func timer(t time.Duration) {
-	fmt.Printf("\nScan completed in %s seconds\n", report(t.Round(time.Millisecond)))
+func timer(t time.Duration, o string) {
+	tps_report := fmt.Sprintf("\nScan completed in %s seconds\n", report(t.Round(time.Millisecond)))
+	fmt.Println(tps_report)
+
+	f, err := os.OpenFile(o, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+
+	fmt.Fprintln(f, tps_report)
 }
 
 func main() {
@@ -80,17 +89,14 @@ func main() {
 	tasks := make(chan string)
 	output := make(chan Results)
 
-	// apparently I have an issue here
+	/* then we spawn 50 go routines and 50 wg counters. so far so good */
 	for i := 0; i < concurrency; i++ {
 		tasksWG.Add(1)
 
-		// do the cool things
-		// I had this in a go routine before and taking it out I noticed no performance change whatsoever
-		// yet according to someone on the Gopher Discord I'm closing the tasks channel almost immediately by doing this inside a goroutine
-		// which makes sense... yet somehow the program executes just the same
+		// one goroutine per wg counter. nothing wrong here
 		go func() {
 			for t := range tasks {
-				// actually run the HRS scan
+				// nothing wrong here. This is the processing part. 
 				resp, err := smuggler(t, sec, debug)
 				if err != nil {
 					continue
@@ -103,7 +109,6 @@ func main() {
 	}
 
 	// wait for all the output to come through the channel
-	// There shouldn't be anything wrong here?
 	var outputWG sync.WaitGroup
 	outputWG.Add(1)
 	go func() {
@@ -129,19 +134,9 @@ func main() {
 
 				// Then write it to file (whether you like it or not)
 				fmt.Fprintf(f, "%s\r\n", string(js))
-				//if _, err = f.WriteString(string(js)+"\n"); err != nil {
-				//	log.Fatal(err)
-				//}
 			}
 		}
 		outputWG.Done()
-	}()
-
-
-	// waiting for tasks to complete
-	go func() {
-		tasksWG.Wait()
-		close(output)
 	}()
 
 	// open the file
@@ -150,33 +145,32 @@ func main() {
 		log.Panic(err)
 	}
 
-	// filling up the kyoo
+	// here in the main thread of execution we scan our file line by line and add each line to the input channel. ok now go back to line 93
 	s := bufio.NewScanner(f)
 	for s.Scan() {
 		tasks <- s.Text()
 	}
 
-	// because the I was waiting on tasks in a go routine this runs almost immediately which means I'm not executing any of the tasks
-	// even though it does indeed run everything? I don't get it
-	close(tasks)
+	// waiting for tasks to complete
+	go func() {
+		tasksWG.Wait()
+		close(output)
+	}()
+
+	defer close(tasks)
 	outputWG.Wait()
-	timer(time.Since(t1))
+	timer(time.Since(t1), outfile)
 
 }
 
 // I lika... do... dah cha cha
 func smuggler(t string, sec int, debug bool) (Results, error) {
 	var r Results
-	pwd, err := os.Getwd()
-	if err != nil {
-		log.Fatal(err)
-	}
-	pybin := fmt.Sprintf("%s/resources/smuggler/smuggler.py", pwd)
 	// time out smuggler.py if it takes too long
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, pybin, "-x", "-u", t)
+	cmd := exec.CommandContext(ctx, "/home/dj/Development/go/src/supasmuggler/resources/smuggler/smuggler.py", "-x", "-u", t)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return r, err

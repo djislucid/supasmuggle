@@ -30,9 +30,7 @@ import (
 )
 
 type Results struct {
-	Host string
-	Payload string
-	Error string
+	Host, Payload, Error string
 }
 
 // pretty colors
@@ -157,7 +155,7 @@ func main() {
 		close(output)
 	}()
 
-	defer close(tasks)
+	close(tasks)
 	outputWG.Wait()
 	timer(time.Since(t1), outfile)
 
@@ -170,7 +168,7 @@ func smuggler(t string, sec int, debug bool) (Results, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "/home/dj/Development/go/src/supasmuggler/resources/smuggler/smuggler.py", "-x", "-u", t)
+	cmd := exec.CommandContext(ctx, "/home/dj/Development/go/src/supasmuggle/resources/smuggler/smuggler.py", "-x", "-u", t)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return r, err

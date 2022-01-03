@@ -1,7 +1,5 @@
 package main
 // compile: go build -o supasmuggle supasmuggle.go
-// run: ./supasmuggle <file.txt>
-// OR
 // go run supasmuggle.go -f <file.txt> -t 10000000 (but not that many) 
 
 /*
@@ -168,7 +166,7 @@ func smuggler(t string, sec int, debug bool) (Results, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "/home/dj/Development/go/src/supasmuggle/resources/smuggler/smuggler.py", "-x", "-u", t)
+	cmd := exec.CommandContext(ctx, "./resources/smuggler/smuggler.py", "-x", "-u", t)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return r, err

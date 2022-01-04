@@ -2,7 +2,6 @@
 supasmuggle
 *.json
 *.txt
-fuck.go
 # Samples
 resources/sample.txt
 resources/small_sample.txt

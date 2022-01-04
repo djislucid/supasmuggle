@@ -4,6 +4,7 @@ package main
 
 /*
  * Bugs:
+ * 	- smuggler.py path issues
  *	- Not 100% sure the CommandContext timeout is working
  * 	- It's not better
  * 
@@ -21,6 +22,7 @@ import (
 	"bufio"
 	"sync"
 	"time"
+	"path/filepath"
 	"strings"
 	"encoding/json"
 
@@ -162,11 +164,20 @@ func main() {
 // I lika... do... dah cha cha
 func smuggler(t string, sec int, debug bool) (Results, error) {
 	var r Results
+
+	// get binary path
+	p, err := os.Executable()
+	if err != nil {
+		log.Fatal(err)
+	}
+	binPath := filepath.Dir(p)
+	smuggler := fmt.Sprintf("%s/resources/smuggler/smuggler.py", binPath)
+
 	// time out smuggler.py if it takes too long
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "./resources/smuggler/smuggler.py", "-x", "-u", t)
+	cmd := exec.CommandContext(ctx, smuggler, "-x", "-u", t)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return r, err

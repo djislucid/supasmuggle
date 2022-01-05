@@ -173,7 +173,7 @@ func smuggler(t string, sec int, debug bool) (Results, error) {
 	}
 	binPath := filepath.Dir(p)
 	fmt.Println(binPath)
-	os.Sleep(time.Second*5)
+	time.Sleep(time.Second*5)
 	smuggler := fmt.Sprintf("%s/resources/smuggler/smuggler.py", binPath)
 
 	// time out smuggler.py if it takes too long

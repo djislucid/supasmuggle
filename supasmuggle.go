@@ -165,17 +165,7 @@ func main() {
 func smuggler(t string, sec int, debug bool) (Results, error) {
 	var r Results
 
-	// get binary path
-	// WHY THE FUCK DOESN'T THIS FUCKING WORK
-	p, err := os.Executable()
-	if err != nil {
-		log.Fatal(err)
-	}
-	binPath := filepath.Dir(p)
-	fmt.Println(binPath)
-	time.Sleep(time.Second*5)
-	smuggler := fmt.Sprintf("%s/resources/smuggler/smuggler.py", binPath)
-
+	smuggler := fmt.Sprintf("%s/src/supasmuggle/resources/smuggler/smuggler.py", os.Getenv("GOPATH"))
 	// time out smuggler.py if it takes too long
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()

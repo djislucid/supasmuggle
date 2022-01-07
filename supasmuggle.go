@@ -43,17 +43,6 @@ func timer(t time.Duration, o string) {
 }
 
 func main() {
-	/*
-	 * Before anything happens you'll want to make sure you check to see if smuggler.py is installed
-	 * If not you'll need to print a message that tells them to install it and put it in their path so that it can be ran via:
-	 * /usr/local/bin/smuggler
-	 *
-	 * To do that: 
-	 * path, err := exec.LookPath("/usr/local/bin/smuggler")
-	 * if err != nil {
-	 *	print helpful message on where to get it and install it
-	 * }
-	 */
 	// args parsing duh
 	var sec int
 	flag.IntVar(&sec, "s", 360, "Specify the time (in seconds) to wait before moving on to next host")
@@ -89,14 +78,13 @@ func main() {
 	tasks := make(chan string)
 	output := make(chan Results)
 
-	/* then we spawn 50 go routines and 50 wg counters. so far so good */
+	// begin supafast stuff
 	for i := 0; i < concurrency; i++ {
 		tasksWG.Add(1)
 
-		// one goroutine per wg counter. nothing wrong here
 		go func() {
 			for t := range tasks {
-				// nothing wrong here. This is the processing part. 
+				// actually run smuggler.py against each url
 				resp, err := smuggler(t, sec, debug, exhaustive)
 				if err != nil {
 					continue
@@ -145,13 +133,13 @@ func main() {
 		log.Panic(err)
 	}
 
-	// here in the main thread of execution we scan our file line by line and add each line to the input channel. ok now go back to line 93
+	// fill up tasks queue in the main thread
 	s := bufio.NewScanner(f)
 	for s.Scan() {
 		tasks <- s.Text()
 	}
 
-	// waiting for tasks to complete
+	// waiting for tasks to complete in a separate thread
 	go func() {
 		tasksWG.Wait()
 		close(output)

@@ -1,21 +1,21 @@
 ## Supasmuggle
 A multithreaded wrapper for smuggler.py
 
-#### Installation
+### Installation
 
 `go install github.com/djIsLucid/supasmuggle@latest`
 
 You will need to ensure that https://github.com/defparam/smuggler is installed on your system and in your path as "smuggler", otherwise this will not run.
 
-#### Basic Usage
+### Basic Usage
 
-`supasmuggle -t 100 -f urls.txt -o urls.json"
+`supasmuggle -t 100 -f urls.txt -o urls.json`
 
 For debugging information
-`supasmuggle -t 100 -f urls.txt -o urls.json -d"
+`supasmuggle -t 100 -f urls.txt -o urls.json -d`
 
 To run the exhaustive.py module (this will take much longer)
-`supasmuggle -t 100 -f urls.txt -o urls.json -e"
+`supasmuggle -t 100 -f urls.txt -o urls.json -e`
 
 
 ```

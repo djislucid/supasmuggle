@@ -22,7 +22,6 @@ import (
 	"bufio"
 	"sync"
 	"time"
-	"path/filepath"
 	"strings"
 	"encoding/json"
 
@@ -55,6 +54,17 @@ func timer(t time.Duration, o string) {
 }
 
 func main() {
+	/*
+	 * Before anything happens you'll want to make sure you check to see if smuggler.py is installed
+	 * If not you'll need to print a message that tells them to install it and put it in their path so that it can be ran via:
+	 * /usr/local/bin/smuggler
+	 *
+	 * To do that: 
+	 * path, err := exec.LookPath("/usr/local/bin/smuggler")
+	 * if err != nil {
+	 *	print helpful message on where to get it and install it
+	 * }
+	 */
 	// args parsing duh
 	var sec int
 	flag.IntVar(&sec, "s", 360, "Specify the time (in seconds) to wait before moving on to next host")
@@ -64,6 +74,9 @@ func main() {
 
 	var debug bool
 	flag.BoolVar(&debug, "d", false, "Show the actual output of smuggler.py")
+
+	var exhaustive bool
+	flag.BoolVar(&exhaustive, "e", false, "Run exhaustive.py")
 
 	var outfile string
         t := time.Now()
@@ -95,7 +108,7 @@ func main() {
 		go func() {
 			for t := range tasks {
 				// nothing wrong here. This is the processing part. 
-				resp, err := smuggler(t, sec, debug)
+				resp, err := smuggler(t, sec, debug, exhaustive)
 				if err != nil {
 					continue
 				}
@@ -162,15 +175,26 @@ func main() {
 }
 
 // I lika... do... dah cha cha
-func smuggler(t string, sec int, debug bool) (Results, error) {
+func smuggler(t string, sec int, debug, exhaustive bool) (Results, error) {
 	var r Results
+	var cmd *exec.Cmd
+	smuggler, err := exec.LookPath("smuggler")
+	if err != nil {
+		errorf := fmt.Errorf("%v : smuggler is not in your $PATH. git clone https://github.com/defparam/smuggler\nEnsure that smuggler.py is in your $PATH as \"smuggler\"")
+		fmt.Println(errorf.Error())
+		os.Exit(1)
 
-	smuggler := fmt.Sprintf("%s/src/supasmuggle/resources/smuggler/smuggler.py", os.Getenv("GOPATH"))
+	}
+
 	// time out smuggler.py if it takes too long
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec) * time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, smuggler, "-x", "-u", t)
+	if exhaustive {
+		cmd = exec.CommandContext(ctx, smuggler, "-x", "-c", "exhaustive.py", "-u", t)
+	} else {
+		cmd = exec.CommandContext(ctx, smuggler, "-x", "-u", t)
+	}
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		return r, err

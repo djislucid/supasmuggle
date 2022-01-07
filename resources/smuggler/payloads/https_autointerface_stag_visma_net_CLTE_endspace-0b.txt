@@ -1,12 +1,0 @@
-POST /?cb=3030178476818871 HTTP/1.1
-Transfer-Encoding: chunked
-Host: autointerface.stag.visma.net
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36
-Content-type: application/x-www-form-urlencoded; charset=UTF-8
-Content-Length: 4
-Cookie:  autointerface_session=7bd43098146c0249e9fb3412f1fe841e;
-
-1
-Z
-0
-

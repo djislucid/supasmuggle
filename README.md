@@ -11,10 +11,10 @@ You will need to ensure that https://github.com/defparam/smuggler is installed o
 
 `supasmuggle -t 100 -f urls.txt -o urls.json`
 
-For debugging information
+> For debugging information
 `supasmuggle -t 100 -f urls.txt -o urls.json -d`
 
-To run the exhaustive.py module (this will take much longer)
+> To run the exhaustive.py module (this will take much longer)
 `supasmuggle -t 100 -f urls.txt -o urls.json -e`
 
 

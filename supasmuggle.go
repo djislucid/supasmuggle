@@ -1,16 +1,5 @@
 package main
-// compile: go build -o supasmuggle supasmuggle.go
-// go run supasmuggle.go -f <file.txt> -t 10000000 (but not that many) 
-
-/*
- * Bugs:
- * 	- smuggler.py path issues
- *	- Not 100% sure the CommandContext timeout is working
- * 	- It's not better
- * 
- * To Do:
- *	Add flags to enable exhaustive mode in smuggler.py as well as not stop after finding one vuln (should be real easy)
- */
+// a multi-threaded wrapper around https://github.com/defparam/smuggler
 
 import (
 	"fmt"
